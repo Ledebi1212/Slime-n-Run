@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://b0wl64cvlno8l"]
+
+[ext_resource type="Texture2D" uid="uid://hhut5e0ii0cf" path="res://Sprites/UI/MenuBack.png" id="1_7u8mm"]
+[ext_resource type="Texture2D" uid="uid://dy3esb4gyyvce" path="res://Sprites/UI/Buttons/SettingsButton.png" id="1_u0t2r"]
+[ext_resource type="Texture2D" uid="uid://cspdnk3b0mlb" path="res://Sprites/UI/Buttons/SettingsButtonBack.png" id="2_i6ums"]
+[ext_resource type="Texture2D" uid="uid://bvol3451mpb3d" path="res://Sprites/UI/Buttons/ResumeButton.png" id="3_uo41q"]
+[ext_resource type="Texture2D" uid="uid://ck8lail4a2ww4" path="res://Sprites/UI/Buttons/ResumeButtonBack.png" id="4_lflvq"]
+[ext_resource type="Texture2D" uid="uid://bihrg3703rx3r" path="res://Sprites/UI/Buttons/QuitButton.png" id="6_uo41q"]
+[ext_resource type="Texture2D" uid="uid://o6o6ub65bulr" path="res://Sprites/UI/Buttons/QuitButtonBack.png" id="7_lflvq"]
+[ext_resource type="Texture2D" uid="uid://buqlr55852uck" path="res://Sprites/UI/Buttons/RestartButton.png" id="8_utl33"]
+[ext_resource type="Texture2D" uid="uid://c1mksx1221yg3" path="res://Sprites/UI/Buttons/RestartButtonBack.png" id="9_dducs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utl33"]
+size = Vector2(60, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dducs"]
+size = Vector2(40, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pymk"]
+
+[node name="MenuControl" type="Control" unique_id=276560625]
+process_mode = 2
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuLayer" type="CanvasLayer" parent="." unique_id=692295746]
+layer = 2
+
+[node name="ButtonHolder" type="Control" parent="MenuLayer" unique_id=434744616]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuBack" type="Sprite2D" parent="MenuLayer/ButtonHolder" unique_id=425194518]
+z_index = 10
+texture_filter = 1
+position = Vector2(20, 20)
+scale = Vector2(5, 5)
+texture = ExtResource("1_7u8mm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/ButtonHolder/MenuBack" unique_id=1098616836]
+layout_direction = 4
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -60.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ResumeButton" type="TouchScreenButton" parent="MenuLayer/ButtonHolder/MenuBack/VBoxContainer" unique_id=1160549273]
+z_index = 11
+texture_filter = 1
+texture_normal = ExtResource("3_uo41q")
+texture_pressed = ExtResource("4_lflvq")
+shape = SubResource("RectangleShape2D_utl33")
+action = "Gameplay.Pause"
+
+[node name="SettingsButton" type="TouchScreenButton" parent="MenuLayer/ButtonHolder/MenuBack/VBoxContainer" unique_id=2125137190]
+z_index = 11
+texture_filter = 1
+position = Vector2(0, 20)
+texture_normal = ExtResource("1_u0t2r")
+texture_pressed = ExtResource("2_i6ums")
+shape = SubResource("RectangleShape2D_utl33")
+action = "Gameplay.ToggleSettings"
+
+[node name="QuitButton" type="TouchScreenButton" parent="MenuLayer/ButtonHolder/MenuBack/VBoxContainer" unique_id=50851928]
+z_index = 11
+texture_filter = 1
+position = Vector2(20, 40)
+texture_normal = ExtResource("6_uo41q")
+texture_pressed = ExtResource("7_lflvq")
+shape = SubResource("RectangleShape2D_dducs")
+action = "Gameplay.Quit"
+
+[node name="RestartButton" type="TouchScreenButton" parent="MenuLayer/ButtonHolder/MenuBack/VBoxContainer" unique_id=1974280855]
+z_index = 11
+texture_filter = 1
+position = Vector2(0, 40)
+texture_normal = ExtResource("8_utl33")
+texture_pressed = ExtResource("9_dducs")
+shape = SubResource("RectangleShape2D_1pymk")
+action = "Gameplay.Restart"
+
+[node name="ColorRect" type="ColorRect" parent="MenuLayer" unique_id=119352943]
+z_index = 9
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05490196, 0.02745098, 0.105882354, 0.49803922)

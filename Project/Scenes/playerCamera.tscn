@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://bamxdrg7kvh1y"]
+
+[ext_resource type="Script" uid="uid://cuuxcoy0oh56q" path="res://Scripts/UIPosition.gd" id="1_en1rm"]
+[ext_resource type="AudioStream" uid="uid://biy7pshcv17hj" path="res://Sounds/Sfx/Player/Menu.wav" id="2_7a7bk"]
+[ext_resource type="AudioStream" uid="uid://ddu8nghsqyfha" path="res://Sounds/Sfx/Player/MenuSelect.wav" id="3_4g4g2"]
+[ext_resource type="Texture2D" uid="uid://d2pvpqvp2rvp0" path="res://Sprites/UI/Buttons/JumpButton.png" id="4_4vbir"]
+[ext_resource type="Texture2D" uid="uid://b282un3aqamuh" path="res://Sprites/UI/Buttons/JumpButtonBack.png" id="5_g01f6"]
+[ext_resource type="Texture2D" uid="uid://b3011wd6ifhe" path="res://Sprites/UI/Buttons/MoveButtonRight.png" id="6_tgs60"]
+[ext_resource type="Texture2D" uid="uid://755nsur3q4x4" path="res://Sprites/UI/Buttons/MoveButtonRightBack.png" id="7_o2e5o"]
+[ext_resource type="Texture2D" uid="uid://dib2o4fs7qqqi" path="res://Sprites/UI/Buttons/MoveButtonLeft.png" id="8_j7yk7"]
+[ext_resource type="Texture2D" uid="uid://c4nwb0pog6aj5" path="res://Sprites/UI/Buttons/MoveButtonLeftBack.png" id="9_u6t6l"]
+[ext_resource type="Texture2D" uid="uid://dnld0d86or26f" path="res://Sprites/UI/Buttons/PauseButton.png" id="10_8wl3q"]
+[ext_resource type="Texture2D" uid="uid://cnek1512nq34n" path="res://Sprites/UI/Buttons/PauseButtonBack.png" id="11_01xgt"]
+[ext_resource type="PackedScene" uid="uid://b0wl64cvlno8l" path="res://Scenes/inGameMenu.tscn" id="12_xt3t1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efk68"]
+size = Vector2(40, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rarx8"]
+size = Vector2(24, 24)
+
+[node name="PlayerCamera" type="Camera2D" unique_id=1415979833]
+process_mode = 3
+script = ExtResource("1_en1rm")
+MenuOpen = ExtResource("2_7a7bk")
+MenuSelect = ExtResource("3_4g4g2")
+QuitTo = "res://Scenes/TitleScreen.tscn"
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=333075386]
+
+[node name="ButtonAnchor" type="Control" parent="UI" unique_id=2096298408]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MoveButtonContainer" type="BoxContainer" parent="UI/ButtonAnchor" unique_id=80364547]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_right = 420.0
+grow_vertical = 0
+pivot_offset = Vector2(0, 100)
+
+[node name="MoveButtonRight" type="TouchScreenButton" parent="UI/ButtonAnchor/MoveButtonContainer" unique_id=1747867318]
+process_mode = 1
+z_index = 5
+texture_filter = 1
+position = Vector2(239.99982, 19.999939)
+scale = Vector2(5, 5)
+texture_normal = ExtResource("6_tgs60")
+texture_pressed = ExtResource("7_o2e5o")
+shape = SubResource("RectangleShape2D_efk68")
+action = "Gameplay.Right"
+visibility_mode = 1
+
+[node name="MoveButtonLeft" type="TouchScreenButton" parent="UI/ButtonAnchor/MoveButtonContainer" unique_id=97245334]
+process_mode = 1
+z_index = 5
+texture_filter = 1
+position = Vector2(19.99994, 20)
+scale = Vector2(5, 5)
+texture_normal = ExtResource("8_j7yk7")
+texture_pressed = ExtResource("9_u6t6l")
+shape = SubResource("RectangleShape2D_efk68")
+action = "Gameplay.Left"
+visibility_mode = 1
+
+[node name="JumpButtonContainer" type="BoxContainer" parent="UI/ButtonAnchor" unique_id=2030697291]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(200, 100)
+
+[node name="JumpButton" type="TouchScreenButton" parent="UI/ButtonAnchor/JumpButtonContainer" unique_id=1328524213]
+process_mode = 1
+z_index = 5
+texture_filter = 1
+position = Vector2(20, 20)
+scale = Vector2(5, 5)
+texture_normal = ExtResource("4_4vbir")
+texture_pressed = ExtResource("5_g01f6")
+shape = SubResource("RectangleShape2D_efk68")
+action = "Gameplay.Jump"
+visibility_mode = 1
+
+[node name="PauseButtonContainer" type="BoxContainer" parent="UI/ButtonAnchor" unique_id=30859360]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_bottom = 120.0
+grow_horizontal = 0
+pivot_offset = Vector2(120, 0)
+
+[node name="PauseButton" type="TouchScreenButton" parent="UI/ButtonAnchor/PauseButtonContainer" unique_id=1044163430]
+process_mode = 1
+z_index = 5
+texture_filter = 1
+position = Vector2(20, 20)
+scale = Vector2(5, 5)
+texture_normal = ExtResource("10_8wl3q")
+texture_pressed = ExtResource("11_01xgt")
+shape = SubResource("RectangleShape2D_rarx8")
+action = "Gameplay.Pause"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=968138215]
+
+[node name="MenuControl" parent="." unique_id=276560625 instance=ExtResource("12_xt3t1")]
+z_index = 10
+offset_left = 26.0
+offset_top = 21.0
+offset_right = 26.0
+offset_bottom = 21.0

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b4whwmhryjgjy"]
+
+[ext_resource type="Texture2D" uid="uid://c6po7f5eyvbtf" path="res://Sprites/Characters/Enemies/ChunckyRight.png" id="1_eoqmo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1twm7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_eoqmo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xr651"]
+size = Vector2(10, 11)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1973321436]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=820305168]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_1twm7")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1524131106]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_xr651")

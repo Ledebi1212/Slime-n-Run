@@ -1,0 +1,113 @@
+[gd_scene format=4 uid="uid://bhoc5xpqj5cfs"]
+
+[ext_resource type="PackedScene" uid="uid://c74oskqoi16vx" path="res://Scenes/player.tscn" id="1_ko2s7"]
+[ext_resource type="Texture2D" uid="uid://d0dms8i50v1le" path="res://Sprites/Characters/Player/PlayerRight.png" id="2_0dy5s"]
+[ext_resource type="Script" uid="uid://cuuxcoy0oh56q" path="res://Scenes/UIPosition.gd" id="2_efk68"]
+[ext_resource type="Texture2D" uid="uid://bacdie7mb7s7x" path="res://Sprites/Characters/Player/PlayerRightUp.png" id="3_f2nln"]
+[ext_resource type="Texture2D" uid="uid://c2gm4xmo0c7mj" path="res://Sprites/World/SimpleTileSet8x.png" id="4_f2nln"]
+
+[sub_resource type="GDScript" id="GDScript_06fis"]
+script/source = "extends Control
+
+var WindowSize = get_viewport_rect().size
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	WindowSize = get_viewport_rect().size
+	
+	$JumpButton.position = $JumpButton.
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efk68"]
+size = Vector2(10, 10)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efk68"]
+texture = ExtResource("4_f2nln")
+margins = Vector2i(1, 1)
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -4, 4, -4, 4, 4, -1, 4, -3, 4, -3, 2)
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, -2, -4, -2)
+0:0/0/physics_layer_1/polygon_0/one_way = true
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -1, 4, -4, 4, -4, 2)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 3, -4, 3, 4, -4, 4, -4, 4, -4, 4)
+2:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, -2, -4, -2)
+2:0/0/physics_layer_1/polygon_0/one_way = true
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -3, 4, -3, 3, -4, 3)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 3, 3, 3, 3, 4, -4, 4)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -3, 4, -3, 3, -4, 3)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 3, 3, 3, 3, 4, -4, 4)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 3, -4, 3, 4, -4, 4, -4, 4, -4, 4)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -4, 4, -4, 4, 4, -1, 4, -3, 4, -3, 2)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -4, 4, -4, 4, 3, -2, 3, -2, 2, -3, 2)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 3, 3, 3, 2, 3, -4, 3)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 3, -4, 3, 2, 2, 2, 2, 3, -4, 3)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+
+[sub_resource type="TileSet" id="TileSet_06fis"]
+tile_size = Vector2i(8, 8)
+physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_efk68")
+
+[node name="Node2D" type="Node2D" unique_id=1507694035]
+
+[node name="Player" parent="." unique_id=660681379 instance=ExtResource("1_ko2s7")]
+scale = Vector2(5, 5)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1339721353]
+script = ExtResource("2_efk68")
+
+[node name="UI" type="Node" parent="Player/Camera2D" unique_id=683318296]
+script = SubResource("GDScript_06fis")
+
+[node name="JumpButton" type="TouchScreenButton" parent="Player/Camera2D/UI" unique_id=41999491]
+z_index = 5
+texture_filter = 1
+position = Vector2(-529.99994, 269.99997)
+scale = Vector2(10, 10)
+texture_normal = ExtResource("2_0dy5s")
+texture_pressed = ExtResource("3_f2nln")
+shape = SubResource("RectangleShape2D_efk68")
+action = "Gameplay.Jump"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=822383255]
+texture_filter = 1
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray("AAD//wEAAAABAAAAAAAAAAEAAAABAAAAAAABAAEAAAABAAAAAAD+/wEAAAABAAAAAAD+/wIAAAABAAIAAAD//wIAAAABAAIAAAAAAAIAAAABAAIAAAABAAIAAAABAAIAAAACAAEAAAACAAAAAAACAAIAAAACAAIAAAD9/wIAAAAAAAIAAAD9/wEAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAIAAAAGAAIAAAABAAIAAAAHAAIAAAABAAIAAAAIAAIAAAABAAIAAAAJAAIAAAABAAIAAAAJAAEAAAABAAEAAAAIAAEAAAAEAAIAAAAHAAEAAAABAAAAAAAGAAEAAAABAAAAAAAIAAAAAAAAAAEAAAAIAP//AAAAAAEAAAAJAAAAAAABAAEAAAAJAP//AAABAAEAAAAKAP//AAADAAEAAAAKAAAAAAACAAEAAAAKAAEAAAACAAEAAAAKAAIAAAACAAIAAAAFAPz/AAACAAAAAAAFAP3/AAACAAIAAAAEAP3/AAABAAIAAAADAP3/AAABAAIAAAACAP3/AAABAAIAAAABAP3/AAAAAAIAAAABAPz/AAAAAAAAAAACAPz/AAABAAAAAAADAPz/AAABAAAAAAAEAPz/AAABAAAAAAAIAP7/AAAAAAAAAAAJAP7/AAABAAAAAAAKAP7/AAABAAAAAAALAP7/AAACAAAAAAALAP//AAACAAIAAAD7////AAACAAAAAAD7/wAAAAACAAEAAAD7/wEAAAACAAIAAAD6////AAABAAAAAAD6/wAAAAABAAEAAAD6/wEAAAABAAIAAAD5////AAABAAAAAAD5/wAAAAABAAEAAAD5/wEAAAABAAIAAAD4////AAABAAAAAAD4/wAAAAABAAEAAAD4/wEAAAABAAIAAAD3////AAABAAAAAAD3/wAAAAABAAEAAAD3/wEAAAABAAIAAAD2////AAABAAAAAAD2/wAAAAABAAEAAAD2/wEAAAABAAIAAAD1////AAABAAAAAAD1/wAAAAABAAEAAAD1/wEAAAABAAIAAAD0////AAABAAAAAAD0/wAAAAABAAEAAAD0/wEAAAABAAIAAADx/wEAAAAAAAIAAADz/wEAAAABAAIAAADy/wEAAAABAAIAAADz////AAADAAIAAADy//7/AAADAAIAAADx//3/AAADAAIAAADw//z/AAADAAIAAADz//7/AAACAAAAAADy//3/AAACAAAAAADx//z/AAACAAAAAADw//v/AAACAAEAAADw//r/AAACAAEAAADu//n/AAAAAAAAAADv//n/AAABAAAAAADw//n/AAACAAAAAADu//r/AAAAAAEAAADv//r/AAABAAEAAADu//v/AAAAAAEAAADv//v/AAABAAEAAADu//z/AAAAAAEAAADv//z/AAABAAEAAADu//3/AAAAAAEAAADv//3/AAABAAEAAADu//7/AAAAAAEAAADv//7/AAABAAEAAADu////AAAAAAEAAADv////AAABAAEAAADu/wAAAAAAAAIAAADv/wAAAAABAAIAAADw////AAABAAEAAADw/wAAAAABAAIAAADx/wAAAAAEAAEAAADz/wAAAAABAAEAAADy/wAAAAABAAEAAADy////AAABAAEAAADx////AAABAAEAAADx//7/AAABAAEAAADw//7/AAABAAEAAADw//3/AAABAAEAAAD9//v/AAABAAAAAAD+//v/AAACAAAAAAD+//z/AAACAAIAAAD9//z/AAABAAIAAAD8//v/AAAAAAAAAAD8//z/AAAAAAIAAAA=")
+tile_set = SubResource("TileSet_06fis")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=797895919]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=406318011]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.47405845, 0.78854775, 1, 1)

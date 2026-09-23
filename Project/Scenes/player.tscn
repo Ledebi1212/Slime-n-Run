@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://c74oskqoi16vx"]
+
+[ext_resource type="Script" uid="uid://cljtj346c5xy5" path="res://Scripts/Player.gd" id="1_sweqy"]
+[ext_resource type="Texture2D" uid="uid://d0dms8i50v1le" path="res://Sprites/Characters/Player/PlayerRight.png" id="2_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://u1phry6v8i5g" path="res://Sprites/Characters/Player/PlayerLeft.png" id="3_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://oe5uaq2t5i0g" path="res://Sprites/Characters/Player/PlayerLeftUp.png" id="4_dw050"]
+[ext_resource type="Texture2D" uid="uid://bacdie7mb7s7x" path="res://Sprites/Characters/Player/PlayerRightUp.png" id="5_b26j0"]
+[ext_resource type="AudioStream" uid="uid://b6cmtml3u7dkm" path="res://Sounds/Sfx/Player/Jump.wav" id="6_x3wgy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n7ghd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2hs0m")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1jxqw")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dw050")
+}],
+"loop": true,
+"name": &"LeftJump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2hs0m")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_b26j0")
+}],
+"loop": true,
+"name": &"RightJump",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvl01"]
+size = Vector2(4, 5)
+
+[node name="Player" type="CharacterBody2D" unique_id=660681379]
+z_index = 1
+script = ExtResource("1_sweqy")
+jump = ExtResource("6_x3wgy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1330737374]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_n7ghd")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1791181950]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_nvl01")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1196607120]
